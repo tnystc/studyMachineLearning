@@ -11,6 +11,7 @@ private:
     vector<double> w;
     double b;
 
+    //implementing dot product for two vectors
     double dot(const vector<double> A, const vector<double> B) {
         int n = A.size();
         int m = B.size();
@@ -27,7 +28,7 @@ private:
 
         return result;
     }
-
+    //cost function mean squared error
     double computeCost() {
         int m = X.size();
         int featureCount = X[0].size();
@@ -43,7 +44,7 @@ private:
         return cost;
 
     }
-
+    //derivative of cost function with respect to weight
     vector<double> computeGradientW() {
         int m = X.size();
         int featureCount = X[0].size();
@@ -64,6 +65,7 @@ private:
         return dw;
     }
 
+    //derivative of cost function with respect to bias
     double computeGradientB() {
         int m = X.size();
         int featureCount = X[0].size();
@@ -80,6 +82,7 @@ private:
 public:
     LinearRegression(const vector<vector<double> >& x, const vector<double>& y) : X(x), Y(y), w(x[0].size(),0.5), b(0) {}
 
+    //gradient decent algorithm
     void fit(double alpha, double iterations) {
         int featureCount = X[0].size();
 
